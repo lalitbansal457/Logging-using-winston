@@ -1,0 +1,26 @@
+{
+  "name": "Logging-using-winston",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalitbansal457/Logging-using-winston.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lalitbansal457/Logging-using-winston/issues"
+  },
+  "homepage": "https://github.com/lalitbansal457/Logging-using-winston#readme",
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.1"
+  }
+}
