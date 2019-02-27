@@ -7,6 +7,8 @@ var logger = require('./config/winston');
 var winston = require('winston');
 var appRoot = require('app-root-path');
 
+var {format, label} = require('winston');
+
 //var morgan = require('morgan');
 //app.use(morgan('combined', { stream: winston.stream }));
 
@@ -33,10 +35,28 @@ logger.query(options, function (err, results) {
 
 app.listen(8000);
 
-
+console.log(logger.format);
 app.post('/cep/:apiKey/:name', function(request, response){
+  
+
+  // Format logs
+  const myFormat = format.printf(({ level, message, label, timestamp }) => {
+    console.log(level, message, label, timestamp);
+    return `${timestamp} [${label}] ${level}: ${message} abc`;
+  });
+
   //Adding dynamic filename
-  const files = new winston.transports.File({ filename: `${appRoot}/logs/${request.params.apiKey}/${request.params.name}.log` });
+  const files = new winston.transports.File({ 
+    filename: `${appRoot}/logs/${request.params.apiKey}/${request.params.name}.log`,  
+    format: format.combine(
+    format.label({ label: 'right meow!' }),
+    format.timestamp(),
+    myFormat
+  )
+  });
+
+  logger.add(files);
+  logger.info("vdsfvfs","bgfb")
 })
 
 

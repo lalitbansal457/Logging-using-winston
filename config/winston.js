@@ -1,5 +1,6 @@
 var appRoot = require('app-root-path');
 var winston = require('winston');
+var {format} = require('winston');
 
 
 var options = {
@@ -10,7 +11,23 @@ var options = {
     json: true,
     maxsize: 5242880, // 5MB
     maxFiles: 5,
-    colorize: false,
+    colorize: true,
+    /*format: format.combine(
+        format.timestamp({
+          format: 'YYYY-MM-DD HH:mm:ss'
+        }),
+        //
+        // The simple format outputs
+        // `${level}: ${message} ${[Object with everything else]}`
+        //
+        //format.simple()
+        //
+        // Alternatively you could use this custom printf format if you
+        // want to control where the timestamp comes in your final message.
+        // Try replacing `format.simple()` above with this:
+        //
+         format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+      ),*/
   },
   console: {
     level: 'debug',
